@@ -8,6 +8,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 import com.ahh.di.qualifiers.Animal;
 import com.ahh.di.qualifiers.Avion;
+import com.ahh.di.qualifiers.Nido;
 import com.ahh.di.qualifiers.Pajaro;
 
 @SpringBootApplication
@@ -18,9 +19,9 @@ public class DependencyInyectionApplication {
 
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context=SpringApplication.run(DependencyInyectionApplication.class, args);
-		Animal animal= context.getBean("pajarito",Animal.class);
+		Nido nido= context.getBean(Nido.class);
 		
-		log.info("Animal nombre= {}",animal.getNombre());
+		nido.imprimir();
 	}
 
 }

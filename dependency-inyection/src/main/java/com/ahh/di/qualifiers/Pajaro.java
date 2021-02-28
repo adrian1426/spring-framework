@@ -6,6 +6,7 @@ package com.ahh.di.qualifiers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 /**
@@ -13,7 +14,8 @@ import org.springframework.stereotype.Component;
  *
  */
 
-@Component("pajarito") // el nombre es para el qualifier, sino se le especifica, toma el nombre de la clase
+@Component // el nombre es para el qualifier, sino se le especifica, toma el nombre de la clase
+@Primary //cuando es primary y existe multiples implementaciones del tipo animal, toma este clase por defecto
 public class Pajaro extends Animal implements Volador{
 	private static final Logger log = LoggerFactory.getLogger(Pajaro.class);
 	

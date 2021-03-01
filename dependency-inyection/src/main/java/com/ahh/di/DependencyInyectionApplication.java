@@ -6,6 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import com.ahh.di.profiles.EnvironmentService;
 import com.ahh.di.qualifiers.Animal;
 import com.ahh.di.qualifiers.Avion;
 import com.ahh.di.qualifiers.Nido;
@@ -19,9 +20,9 @@ public class DependencyInyectionApplication {
 
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context=SpringApplication.run(DependencyInyectionApplication.class, args);
-		Nido nido= context.getBean(Nido.class);
+		EnvironmentService env=context.getBean(EnvironmentService.class);
 		
-		nido.imprimir();
+		log.info("Active profile: {}",env.getEnvironment());
 	}
 
 }

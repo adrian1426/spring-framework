@@ -11,6 +11,7 @@ import com.ahh.di.qualifiers.Animal;
 import com.ahh.di.qualifiers.Avion;
 import com.ahh.di.qualifiers.Nido;
 import com.ahh.di.qualifiers.Pajaro;
+import com.ahh.di.scopes.EjemploScope;
 
 @SpringBootApplication
 public class DependencyInyectionApplication {
@@ -20,9 +21,11 @@ public class DependencyInyectionApplication {
 
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context=SpringApplication.run(DependencyInyectionApplication.class, args);
-		EnvironmentService env=context.getBean(EnvironmentService.class);
+		EjemploScope ejemploScope=context.getBean(EjemploScope.class);
+		EjemploScope ejemploScope2=context.getBean(EjemploScope.class);
 		
-		log.info("Active profile: {}",env.getEnvironment());
+		log.info("Beans equals {}",ejemploScope.equals(ejemploScope2));
+		log.info("Beans == {}",ejemploScope==ejemploScope2);
 	}
 
 }

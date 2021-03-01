@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  */
 
 @Service
-@Profile("dev")
+@Profile(value= {"dev","default"})
 public class DevEnvironment implements EnvironmentService{
 
 	@Override

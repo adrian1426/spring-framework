@@ -22,7 +22,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 //@Scope("prototype") si está con este scope, no se ejecutará el PreDestroy
-@Lazy
+@Lazy(false)
 public class LifeCycleBean implements BeanNameAware, InitializingBean,DisposableBean {
 
 	private static final Logger log = LoggerFactory.getLogger(LifeCycleBean.class);

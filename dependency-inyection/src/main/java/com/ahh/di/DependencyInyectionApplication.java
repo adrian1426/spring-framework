@@ -20,10 +20,10 @@ public class DependencyInyectionApplication {
 		return "Adrian Dev";
 	}
 	
-	@Bean(initMethod = "iniciar",destroyMethod = "destroy")
-	public ExplicitBean getBean(){
-		return new ExplicitBean();
-	}
+//	@Bean(initMethod = "iniciar",destroyMethod = "destroy")
+//	public ExplicitBean getBean(){
+//		return new ExplicitBean();
+//	}
 
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context=SpringApplication.run(DependencyInyectionApplication.class, args);

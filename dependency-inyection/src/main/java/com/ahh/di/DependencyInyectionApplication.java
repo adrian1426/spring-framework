@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 
+import com.ahh.di.lifeCycle.ExplicitBean;
 import com.ahh.di.lifeCycle.LifeCycleBean;
 
 @SpringBootApplication
@@ -18,7 +19,11 @@ public class DependencyInyectionApplication {
 	public String getApplicationName() {
 		return "Adrian Dev";
 	}
-
+	
+	@Bean(initMethod = "iniciar",destroyMethod = "destroy")
+	public ExplicitBean getBean(){
+		return new ExplicitBean();
+	}
 
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context=SpringApplication.run(DependencyInyectionApplication.class, args);

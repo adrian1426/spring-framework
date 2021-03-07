@@ -3,6 +3,9 @@
  */
 package com.ahh.di.lifeCycle;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanNameAware;
@@ -20,7 +23,17 @@ public class LifeCycleBean implements BeanNameAware {
 
 	@Override
 	public void setBeanName(String name) {
-		log.info("Name: {}",name);
+		log.info("Bean Name Aware: {}",name);
+	}
+	
+	@PostConstruct
+	public void iniciar() {
+		log.info("Post Construct");
+	}
+	
+	@PreDestroy
+	public void destroy() {
+		log.info("Pre Destroy");
 	}
 
 }

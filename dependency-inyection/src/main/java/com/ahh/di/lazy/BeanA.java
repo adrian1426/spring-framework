@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-@Lazy(false)
+@Lazy
 public class BeanA {
 	
 	@Autowired

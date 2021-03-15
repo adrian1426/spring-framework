@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -49,6 +50,12 @@ public class UserController {
 	@PutMapping("/{username}")
 	public ResponseEntity<User> updateUser(@RequestBody User user,@PathVariable String username){
 		return new ResponseEntity<User>(userService.updateUser(user, username),HttpStatus.OK);
+	}
+	
+	@DeleteMapping(value=("/{username}"))
+	public ResponseEntity<Void> deleteUser(@PathVariable String username){
+		userService.deleteUser(username);
+		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 	}
 	
 }

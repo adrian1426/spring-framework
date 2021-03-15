@@ -64,4 +64,9 @@ public class UserService {
 		
 		return findUserUpdate;
 	}
+	
+	public void deleteUser(String username) {
+		User findUserDelete=getUsersByUsername(username);
+		users.remove(findUserDelete);
+	}
 }

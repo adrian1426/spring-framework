@@ -45,4 +45,15 @@ public class UserService {
 				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
 						String.format("\"User %s No encontrado\"", username)));
 	}
+
+	public User createUser(User user) {
+		if (users.stream().anyMatch(us -> us.getUserName().equals(user.getUserName()))) {
+			throw new ResponseStatusException(HttpStatus.CONFLICT,
+					String.format("User %s ya existe", user.getUserName()));
+		}
+
+		users.add(user);
+
+		return user;
+	}
 }

@@ -56,4 +56,12 @@ public class UserService {
 
 		return user;
 	}
+	
+	public User updateUser(User user,String username) {
+		User findUserUpdate=getUsersByUsername(username);
+		findUserUpdate.setNickName(user.getNickName());
+		findUserUpdate.setPassword(user.getPassword());
+		
+		return findUserUpdate;
+	}
 }

@@ -5,6 +5,7 @@ package com.ahh.users.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
 
@@ -36,7 +37,11 @@ public class UserService {
 		}
 	}
 
-	public List<User> getUsers() {
+	public List<User> getUsers(String usernameStartWith) {
+		if(usernameStartWith!=null) {
+			return users.stream().filter(us->us.getUserName().startsWith(usernameStartWith)).collect(Collectors.toList());
+		}
+		
 		return users;
 	}
 

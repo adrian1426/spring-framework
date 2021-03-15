@@ -4,13 +4,14 @@
 package com.ahh.users.services;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.ahh.users.models.User;
 import com.github.javafaker.Faker;
@@ -37,5 +38,11 @@ public class UserService {
 
 	public List<User> getUsers() {
 		return users;
+	}
+
+	public User getUsersByUsername(String username) {
+		return users.stream().filter(us -> us.getUserName().equals(username)).findAny()
+				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+						String.format("\"User %s No encontrado\"", username)));
 	}
 }

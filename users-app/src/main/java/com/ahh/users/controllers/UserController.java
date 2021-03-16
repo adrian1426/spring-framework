@@ -4,7 +4,6 @@
 package com.ahh.users.controllers;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,34 +28,35 @@ import com.ahh.users.services.UserService;
 @RestController
 @RequestMapping("/users")
 public class UserController {
-	
+
 	@Autowired
 	private UserService userService;
-	
+
 	@GetMapping
-	public ResponseEntity<List<User>> getUsers(@RequestParam(value="usernameStart",required = false) String username){
-		return new ResponseEntity<List<User>>(userService.getUsers(username),HttpStatus.OK);
+	public ResponseEntity<List<User>> getUsers(
+			@RequestParam(value = "usernameStart", required = false) String username) {
+		return new ResponseEntity<List<User>>(userService.getUsers(username), HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/{username}")
-	public ResponseEntity<User> getUserByUsername(@PathVariable String username){
-		return new ResponseEntity<User>(userService.getUsersByUsername(username),HttpStatus.OK);
+	public ResponseEntity<User> getUserByUsername(@PathVariable String username) {
+		return new ResponseEntity<User>(userService.getUsersByUsername(username), HttpStatus.OK);
 	}
-	
+
 	@PostMapping
-	public ResponseEntity<User> createUser(@RequestBody User user){
-		return new ResponseEntity<User>(userService.createUser(user),HttpStatus.CREATED);
+	public ResponseEntity<User> createUser(@RequestBody User user) {
+		return new ResponseEntity<User>(userService.createUser(user), HttpStatus.CREATED);
 	}
-	
+
 	@PutMapping("/{username}")
-	public ResponseEntity<User> updateUser(@RequestBody User user,@PathVariable String username){
-		return new ResponseEntity<User>(userService.updateUser(user, username),HttpStatus.OK);
+	public ResponseEntity<User> updateUser(@RequestBody User user, @PathVariable String username) {
+		return new ResponseEntity<User>(userService.updateUser(user, username), HttpStatus.OK);
 	}
-	
-	@DeleteMapping(value=("/{username}"))
-	public ResponseEntity<Void> deleteUser(@PathVariable String username){
+
+	@DeleteMapping(value = ("/{username}"))
+	public ResponseEntity<Void> deleteUser(@PathVariable String username) {
 		userService.deleteUser(username);
 		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 	}
-	
+
 }
